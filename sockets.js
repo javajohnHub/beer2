@@ -32,6 +32,7 @@ module.exports = function(io) {
 
     socket.on("post team", teamy => {
       var team = new Team(teamy);
+      console.log(team, teamy);
       team.save(function(err, createdTeam) {
         if (err) {
           console.log(err);
