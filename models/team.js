@@ -10,4 +10,4 @@ var TeamSchema = new Schema({
 });
 
 // Compile model from schema
-module.exports = mongoose.model("Team", TeamSchema);
+module.exports = mongoose.model("TeamModel", TeamSchema);
