@@ -31,12 +31,12 @@ module.exports = function(io) {
     });
 
     socket.on("post team", teamy => {
-      console.log(teamy);
       var team = new Team(teamy);
       team.save(function(err, createdTeam) {
         if (err) {
           console.log(err);
         }
+        console.log(createdTeam);
         socket.emit("post team response", createdTeam);
       });
     });

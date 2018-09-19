@@ -75156,7 +75156,7 @@ var BoardComponent = /** @class */ (function () {
         });
         this.socket.on('post team response', function (res) {
             _this.res = res;
-            console.log(res);
+            console.log('res', res);
         });
         this._createForm();
         this.socket.emit('get teams');
