@@ -30,8 +30,8 @@ module.exports = function(io) {
       });
     });
 
-    socket.on("post team", team => {
-      var team = new Team(team);
+    socket.on("post team", teamy => {
+      var team = new Team(teamy);
       team.save(function(err, createdTeam) {
         if (err) {
           console.log(err);
