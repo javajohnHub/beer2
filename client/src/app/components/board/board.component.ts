@@ -20,6 +20,7 @@ export class BoardComponent {
 
 		this.socket.on('post team response', res => {
 			this.res = res;
+			console.log(res);
 		});
 		this._createForm();
 		this.socket.emit('get teams');
