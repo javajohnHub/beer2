@@ -40,6 +40,7 @@ export class BoardComponent {
 			p2: this.beerForm.get('p2').value,
 			score: 0
 		};
+		console.log(team);
 		this.socket.emit('post team', team);
 	}
 }
