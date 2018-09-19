@@ -1,19 +1,24 @@
-<form [formGroup]="beerForm">
-    <div class="ui-inputgroup">
-        <span class="ui-float-label">
-            <input id="float-input" type="text" size="30" pInputText>
-            <label for="float-input">Team Name</label>
-        </span>
-        <span class="ui-float-label">
-            <input id="p1" type="text" size="30" pInputText>
-            <label for="p1">Player 1</label>
-        </span>
-        <span class="ui-float-label">
-            <input id="p2" type="text" size="30" pInputText>
-            <label for="p2">Player 2</label>
-        </span>
+<div class="ui-g">
+    <div class="ui-g-12">
+        <form [formGroup]="beerForm">
+            <div class="ui-inputgroup">
+                <span class="ui-float-label">
+                    <input id="float-input" type="text" size="30" pInputText>
+                    <label for="float-input">Team Name</label>
+                </span>
+                <span class="ui-float-label">
+                    <input id="p1" type="text" size="30" pInputText>
+                    <label for="p1">Player 1</label>
+                </span>
+                <span class="ui-float-label">
+                    <input id="p2" type="text" size="30" pInputText>
+                    <label for="p2">Player 2</label>
+                </span>
+            </div>
+            <button (click)="addTeam()" type="button" pButton label="New Team"></button>
+        </form>
     </div>
-    <button (click)="addTeam()" type="button" pButton label="New Team"></button>
-</form>
+</div>
+
 
 {{res | json}}
