@@ -5,7 +5,12 @@ var logger = require("morgan");
 var cors = require("cors");
 var indexRouter = require("./routes/index");
 var usersRouter = require("./routes/users");
-
+var mongoose = require("mongoose");
+mongoose
+  .connect("mongodb://admin:admin123@ds163402.mlab.com:63402/heroku_0smhk67h")
+  .then(() => {
+    console.log("mongo connected");
+  });
 var app = express();
 
 app.use(cors());
