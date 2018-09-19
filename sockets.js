@@ -13,7 +13,7 @@ module.exports = function(io) {
           if (err) {
             console.log(err);
           } else {
-            socket.in("/").emit("send teams", teams);
+            socket.of("/").emit("send teams", teams);
           }
         });
     });
