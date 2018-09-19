@@ -1,0 +1,114 @@
+/* You can add global styles to this file, and also import other style files */
+@import '../../../node_modules/normalize.css/normalize.css';
+@import '../../../node_modules/primeng/resources/primeng.min.css';
+@import '../../../node_modules/primeng/resources/themes/home/theme.css';
+@import '../../../node_modules/primeicons/primeicons.css';
+
+$border-color: #68727b;
+$bg_color: #6580a1;
+
+.video-container iframe {
+	width: 100%;
+	height: 100%;
+	min-height: 300px;
+}
+.border {
+	border: 1px solid #424548;
+	border-radius: 5px;
+	//height: 50%;
+	margin: 2px;
+	background-color: #68727b;
+	padding: 10px;
+	color: white;
+}
+p-card .ui-card.ui-widget {
+	margin-top: 6px !important;
+	margin-bottom: 6px !important;
+}
+p-card .ui-button.ui-widget {
+	margin-top: 6px !important;
+	margin-bottom: 6px !important;
+}
+h1,
+h2,
+h3,
+h4,
+h5 {
+	width: 100%;
+	text-align: center;
+}
+.sub {
+	padding-left: 20px !important;
+}
+.ui-state-default {
+	border: 1px solid #68727b !important;
+	background-color: #6580a1 !important;
+	color: #ffffff !important;
+}
+input.ui-state-default {
+	background-color: white !important;
+	color: #000 !important;
+}
+.ui-state-default a {
+	color: #ffffff !important;
+}
+
+div.ui-datascroller-content.ui-widget-content {
+	height: 100% !important;
+}
+img {
+	//max-height: 80vh !important;
+}
+.map {
+	width: 100%;
+	height: 100vh;
+}
+.scroll {
+	display: block; /* Hidden by default */
+	position: fixed; /* Fixed/sticky position */
+	bottom: 20px; /* Place the button at the bottom of the page */
+	right: 30px; /* Place the button 30px from the right */
+	z-index: 99; /* Make sure it does not overlap */
+	border: 1px solid black; /* Remove borders */
+	outline: none; /* Remove outline */
+	background-color: rgba(0, 0, 0, 0.3); /* Set a background color */
+	color: black; /* Text color */
+	cursor: pointer; /* Add a mouse pointer on hover */
+	padding: 5px; /* Some padding */
+	border-radius: 10px; /* Rounded corners */
+}
+#scroll:hover {
+	background-color: #555; /* Add a dark-grey background on hover */
+}
+
+.next {
+	cursor: pointer !important;
+}
+
+.previous {
+	cursor: pointer !important;
+}
+img {
+	max-width: 100%;
+	max-height: 100%;
+}
+iframe {
+	max-height: 650px;
+	height: 100%;
+}
+
+.square {
+	height: 100%;
+	width: 100%;
+}
+.center {
+	margin: auto;
+	width: 100%;
+}
+
+.center-item {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+}
