@@ -37,7 +37,8 @@ export class BoardComponent {
 		let team = {
 			name: this.beerForm.get('name').value,
 			p1: this.beerForm.get('p1').value,
-			p2: this.beerForm.get('p2').value
+			p2: this.beerForm.get('p2').value,
+			score: 0
 		};
 		this.socket.emit('post team', team);
 	}
