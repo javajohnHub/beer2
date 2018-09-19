@@ -4,7 +4,7 @@ export class SocketService {
 	static instance: SocketService = null;
 	static isCreating: Boolean = false;
 	public socket: any;
-	private url = 'localhost:3010';
+	private url = 'https://beerolympics.herokuapp.com';
 
 	/**
 	 * constuctor with control handle, that you can not instantiate by new NodoSocket();

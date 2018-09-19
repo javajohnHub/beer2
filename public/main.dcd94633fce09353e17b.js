@@ -75209,7 +75209,7 @@ var SocketService = /** @class */ (function () {
      * within the same application to the same resource
      */
     function SocketService() {
-        this.url = 'localhost:3010';
+        this.url = 'https://beerolympics.herokuapp.com';
         if (!SocketService.isCreating) {
             throw new Error('This is a real singleton. Get an instance via var socket = SocketService.getInsance(); !');
         }
