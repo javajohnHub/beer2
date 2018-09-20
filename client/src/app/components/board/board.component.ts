@@ -21,6 +21,9 @@ export class BoardComponent {
 			this.teams = teams;
 		});
 
+		this.socket.on('some event', () => {
+			console.log('joined room');
+		});
 		this.socket.on('post team response', res => {
 			console.log(res);
 			this.teams.push(res);

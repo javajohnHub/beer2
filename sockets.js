@@ -1,8 +1,11 @@
 console.log("loaded");
 var Team = require("./models/team");
 module.exports = function(io) {
-  io.sockets.on("connection", function(socket) {
+  io.on("connection", function(socket) {
     console.log("connected", socket.id);
+    socket.join("some room");
+    io.to("some room").emit("some event");
+
     socket.on("error", err => {
       console.log(err);
     });
@@ -13,7 +16,7 @@ module.exports = function(io) {
           if (err) {
             console.log(err);
           } else {
-            io.of("/").emit("send teams", teams);
+            io.sockets.emit("send teams", teams);
           }
         });
     });

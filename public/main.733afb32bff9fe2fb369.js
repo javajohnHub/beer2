@@ -75229,6 +75229,9 @@ var BoardComponent = /** @class */ (function () {
         this.socket.on('send teams', function (teams) {
             _this.teams = teams;
         });
+        this.socket.on('some event', function () {
+            console.log('joined room');
+        });
         this.socket.on('post team response', function (res) {
             console.log(res);
             _this.teams.push(res);
