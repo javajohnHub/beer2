@@ -48,10 +48,10 @@ export class BoardComponent {
 
 	private _createForm() {
 		this.beerForm = this._fb.group({
-			name: [''],
-			p1: [''],
-			p2: [''],
-			score: [0]
+			name: ['', [Validators.required]],
+			p1: ['', [Validators.required]],
+			p2: ['', [Validators.required]],
+			score: [0, [Validators.required]]
 		});
 	}
 	addTeam() {
@@ -94,5 +94,15 @@ export class BoardComponent {
 	deleteTeam(team) {
 		this.socket.emit('delete team', team);
 		this.type = 'add';
+	}
+
+	minus(team) {
+		team.score--;
+		this.socket.emit('put team', team);
+	}
+
+	plus(team) {
+		team.score++;
+		this.socket.emit('put team', team);
 	}
 }
