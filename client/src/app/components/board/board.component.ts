@@ -83,7 +83,8 @@ export class BoardComponent {
 		let team = {
 			name: this.editForm.get('name').value,
 			p1: this.editForm.get('p1').value,
-			p2: this.editForm.get('p2').value
+			p2: this.editForm.get('p2').value,
+			score: this.team.score
 		};
 		this.team = team;
 		this.socket.emit('put team', team);
@@ -97,6 +98,7 @@ export class BoardComponent {
 	}
 
 	minus(team) {
+		this.team = team;
 		console.log(team.score);
 		if (this.type == 'edit' && team.score > 0) {
 			team.score--;
