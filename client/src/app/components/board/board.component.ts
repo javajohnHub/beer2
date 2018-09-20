@@ -27,13 +27,19 @@ export class BoardComponent {
 		});
 
 		this.socket.on('put team response', res => {
-			let index = this.teams.indexOf(res);
-			this.teams.splice(index, 1, res);
+			this.teams.forEach((team, i) => {
+				if ((team.name = res.name)) {
+					this.teams.splice(i, 1, res);
+				}
+			});
 		});
 
 		this.socket.on('delete team response', res => {
-			let index = this.teams.indexOf(res);
-			this.teams.splice(index, 1);
+			this.teams.forEach((team, i) => {
+				if ((team.name = res.name)) {
+					this.teams.splice(i, 1);
+				}
+			});
 		});
 		this._createForm();
 		this.socket.emit('get teams');
@@ -63,9 +69,9 @@ export class BoardComponent {
 		this.idx = i;
 		this.team = team;
 		this.editForm = this._fb.group({
-			name: [this.team.name],
-			p1: [this.team.p1],
-			p2: [this.team.p2],
+			name: [this.editForm.get('name').value],
+			p1: [this.editForm.get('p1').value],
+			p2: [this.editForm.get('p2').value],
 			score: [this.team.score]
 		});
 		this.type = 'edit';

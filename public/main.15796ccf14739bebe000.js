@@ -75226,12 +75226,18 @@ var BoardComponent = /** @class */ (function () {
             console.log('res', res);
         });
         this.socket.on('put team response', function (res) {
-            var index = _this.teams.indexOf(res);
-            _this.teams.splice(index, 1, res);
+            _this.teams.forEach(function (team, i) {
+                if ((team.name = res.name)) {
+                    _this.teams.splice(i, 1, res);
+                }
+            });
         });
         this.socket.on('delete team response', function (res) {
-            var index = _this.teams.indexOf(res);
-            _this.teams.splice(index, 1);
+            _this.teams.forEach(function (team, i) {
+                if ((team.name = res.name)) {
+                    _this.teams.splice(i, 1);
+                }
+            });
         });
         this._createForm();
         this.socket.emit('get teams');
@@ -75259,9 +75265,9 @@ var BoardComponent = /** @class */ (function () {
         this.idx = i;
         this.team = team;
         this.editForm = this._fb.group({
-            name: [this.team.name],
-            p1: [this.team.p1],
-            p2: [this.team.p2],
+            name: [this.editForm.get('name').value],
+            p1: [this.editForm.get('p1').value],
+            p2: [this.editForm.get('p2').value],
             score: [this.team.score]
         });
         this.type = 'edit';
