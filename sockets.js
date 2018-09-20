@@ -37,7 +37,7 @@ module.exports = function(io) {
           console.log(err);
         }
         console.log("createdTeam", createdTeam);
-        socket.emit("post team response", createdTeam);
+        io.of("/").emit("post team response", createdTeam);
       });
     });
 
@@ -57,7 +57,7 @@ module.exports = function(io) {
             if (err) {
               console.log(err);
             }
-            socket.emit("put team response", team);
+            io.of("/").emit("put team response", team);
           });
         }
       });
@@ -70,7 +70,7 @@ module.exports = function(io) {
           message: delteam.name + " successfully deleted",
           id: team._id
         };
-        socket.emit("delete team response", team);
+        io.of("/").emit("delete team response", team);
       });
     });
   });
