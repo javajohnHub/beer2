@@ -26,7 +26,9 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { PanelModule } from 'primeng/panel';
 import { BoardComponent } from './components/board/board.component';
-
+import { DialogModule } from 'primeng/dialog';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ConfirmationService } from 'primeng/api';
 @NgModule({
 	declarations: [AppComponent, BoardComponent],
 	imports: [
@@ -52,9 +54,14 @@ import { BoardComponent } from './components/board/board.component';
 		CheckboxModule,
 		InputSwitchModule,
 		ReactiveFormsModule,
-		PanelModule
+		PanelModule,
+		DialogModule,
+		ConfirmDialogModule
 	],
-	providers: [{ provide: LocationStrategy, useClass: HashLocationStrategy }],
+	providers: [
+		{ provide: LocationStrategy, useClass: HashLocationStrategy },
+		ConfirmationService
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule {}

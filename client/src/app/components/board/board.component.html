@@ -67,7 +67,12 @@
             <button *ngIf="type == 'edit'" (click)="plus(team)" type="button" pButton label="+"></button>
             <button (click)="deleteTeam(team)" type="button" pButton label="Delete"></button>
         </div>
-
+        <p-confirmDialog header="Confirmation" icon="pi pi-exclamation-triangle" width="425" #cd>
+            <p-footer>
+                <button type="button" pButton icon="pi pi-check" label="Join" (click)="cd.reject()"></button>
+                <button type="button" pButton icon="pi pi-check" label="Create" (click)="cd.accept()"></button>
+            </p-footer>
+        </p-confirmDialog>
     </div>
 </div>
 

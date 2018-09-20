@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { SocketService } from '../../shared/socket.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ConfirmationService, Message } from 'primeng/api';
 
 @Component({
 	selector: 'app-board',
@@ -8,6 +9,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class BoardComponent {
 	socket: any;
+	msgs: Message[] = [];
 	teams;
 	team;
 	beerForm: FormGroup;
@@ -15,7 +17,11 @@ export class BoardComponent {
 	type = 'add';
 	idx = 0;
 	rooms;
-	constructor(private _fb: FormBuilder) {}
+	display: boolean = true;
+	constructor(
+		private _fb: FormBuilder,
+		private _confirmationService: ConfirmationService
+	) {}
 	ngOnInit() {
 		this.socket = SocketService.getInstance();
 		this.socket.on('send teams', teams => {
@@ -53,6 +59,30 @@ export class BoardComponent {
 		});
 		this._createForm();
 		this.socket.emit('get teams');
+
+		this._confirmationService.confirm({
+			message: 'Are you sure that you want to proceed?',
+			header: 'Confirmation',
+			icon: 'pi pi-exclamation-triangle',
+			accept: () => {
+				this.msgs = [
+					{
+						severity: 'info',
+						summary: 'Room Created',
+						detail: 'You have created a new room'
+					}
+				];
+			},
+			reject: () => {
+				this.msgs = [
+					{
+						severity: 'info',
+						summary: 'Choose a Room to Join',
+						detail: 'You must choose a room to join'
+					}
+				];
+			}
+		});
 	}
 
 	private _createForm() {
@@ -118,6 +148,6 @@ export class BoardComponent {
 	}
 
 	joinRoom(room) {
-		console.log(Object.keys(room));
+		console.log();
 	}
 }

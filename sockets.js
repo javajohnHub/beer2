@@ -6,9 +6,9 @@ module.exports = function(io) {
     console.log(io.sockets.adapter.rooms);
     socket.emit("send rooms", io.sockets.adapter.rooms);
 
-    socket.on("room", function(room) {
-      socket.join(room);
-      io.sockets.in(room).emit("message", "what is going on, party people?");
+    socket.on("add room", function(roomName) {
+      socket.join(roomName);
+      socket.room = roomName;
     });
 
     socket.on("error", err => {
