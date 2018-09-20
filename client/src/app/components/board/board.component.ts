@@ -144,6 +144,8 @@ export class BoardComponent {
 
 	addRoom() {
 		this.createRoomVis = false;
-		this.socket.emit('add room', this.roomForm.get('name').value);
+		if (this.roomForm.get('name')) {
+			this.socket.emit('add room', this.roomForm.get('name').value);
+		}
 	}
 }
