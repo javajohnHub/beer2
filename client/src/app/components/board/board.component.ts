@@ -19,6 +19,7 @@ export class BoardComponent {
 		this.socket = SocketService.getInstance();
 		this.socket.on('send teams', teams => {
 			this.teams = teams;
+			this.res = teams;
 		});
 
 		this.socket.on('post team response', res => {
