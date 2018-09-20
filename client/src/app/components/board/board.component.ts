@@ -23,6 +23,7 @@ export class BoardComponent {
 		});
 
 		this.socket.on('send rooms', rooms => {
+			console.log('rooms', this.rooms);
 			this.rooms = rooms;
 		});
 		this.socket.on('some event', () => {
@@ -116,7 +117,8 @@ export class BoardComponent {
 		}
 	}
 
-	joinRoom() {
-		this.socket.join('some room');
+	joinRoom(room) {
+		console.log(room);
+		//this.socket.join(room);
 	}
 }
