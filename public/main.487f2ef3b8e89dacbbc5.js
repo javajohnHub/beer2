@@ -75288,6 +75288,7 @@ var BoardComponent = /** @class */ (function () {
     };
     BoardComponent.prototype.deleteTeam = function (team) {
         this.socket.emit('delete team', team);
+        this.type = 'add';
     };
     return BoardComponent;
 }());

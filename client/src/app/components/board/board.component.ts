@@ -93,5 +93,6 @@ export class BoardComponent {
 
 	deleteTeam(team) {
 		this.socket.emit('delete team', team);
+		this.type = 'add';
 	}
 }
