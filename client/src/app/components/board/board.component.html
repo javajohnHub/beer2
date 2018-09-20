@@ -1,6 +1,6 @@
 <div class="ui-g">
     <div class="ui-g-12">
-        <form [formGroup]="beerForm">
+        <form [formGroup]="beerForm" *ngIf="type == 'add'">
             <div class="ui-g-6">
                 <div class="ui-g-12 ui-inputgroup">
                     <span class="ui-float-label">
@@ -27,6 +27,33 @@
             </div>
 
         </form>
+        <form [formGroup]="editForm" *ngIf="type == 'edit'">
+            <div class="ui-g-6">
+                <div class="ui-g-12 ui-inputgroup">
+                    <span class="ui-float-label">
+                        <input id="float-input" type="text" size="30" formControlName="name" pInputText>
+                        <label for="float-input">Team Name</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-inputgroup">
+                    <span class="ui-float-label">
+                        <input class="ui-g-12" id="p1" type="text" size="30" formControlName="p1" pInputText>
+                        <label for="p1">Player 1</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-inputgroup">
+                    <span class="ui-float-label">
+                        <input class="ui-g-12" id="p2" type="text" size="30" formControlName="p2" pInputText>
+                        <label for="p2">Player 2</label>
+                    </span>
+                </div>
+                <div class="ui-g-12">
+
+                </div>
+
+            </div>
+
+        </form>
         {{res | json}}<br />
         <div class="ui-g-12" *ngFor="let team of teams">
             {{team._id}}<br />
@@ -35,6 +62,7 @@
             {{team.p2}}<br />
             {{team.score}}<br />
             <button (click)="editTeam(team)" type="button" pButton label="Edit"></button>
+            <button *ngIf="type == 'edit'" (click)="submit(team)" type="button" pButton label="Submit"></button>
             <button (click)="deleteTeam(team)" type="button" pButton label="Delete"></button>
         </div>
 
