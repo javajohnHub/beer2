@@ -9,7 +9,8 @@ module.exports = function(io) {
 
   io.on("connection", function(socket) {
     console.log("connected", socket.id);
-
+    console.log(io.sockets.adapter.rooms);
+    socket.emit("send rooms", io.sockets.adapter.rooms);
     socket.on("error", err => {
       console.log(err);
     });
