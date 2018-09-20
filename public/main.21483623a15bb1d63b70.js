@@ -76708,9 +76708,6 @@ var BoardComponent = /** @class */ (function () {
             header: 'Confirmation',
             icon: 'pi pi-question',
             accept: function () {
-                _this.roomForm = _this._fb.group({
-                    name: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]]
-                });
                 _this.createRoomVis = true;
             },
             reject: function () { }
@@ -76721,6 +76718,9 @@ var BoardComponent = /** @class */ (function () {
             name: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
             p1: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
             p2: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]]
+        });
+        this.roomForm = this._fb.group({
+            name: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]]
         });
     };
     BoardComponent.prototype.addTeam = function () {

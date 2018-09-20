@@ -67,9 +67,6 @@ export class BoardComponent {
 			header: 'Confirmation',
 			icon: 'pi pi-question',
 			accept: () => {
-				this.roomForm = this._fb.group({
-					name: ['', [Validators.required]]
-				});
 				this.createRoomVis = true;
 			},
 			reject: () => {}
@@ -81,6 +78,9 @@ export class BoardComponent {
 			name: ['', [Validators.required]],
 			p1: ['', [Validators.required]],
 			p2: ['', [Validators.required]]
+		});
+		this.roomForm = this._fb.group({
+			name: ['', [Validators.required]]
 		});
 	}
 	addTeam() {
