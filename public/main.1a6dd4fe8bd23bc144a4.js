@@ -75228,14 +75228,14 @@ var BoardComponent = /** @class */ (function () {
         });
         this.socket.on('put team response', function (res) {
             _this.teams.forEach(function (team, i) {
-                if ((team.name = res.name)) {
+                if (team.name == res.name) {
                     _this.teams.splice(i, 1, res);
                 }
             });
         });
         this.socket.on('delete team response', function (res) {
             _this.teams.forEach(function (team, i) {
-                if ((team.name = res.name)) {
+                if (team.name == res.name) {
                     _this.teams.splice(i, 1);
                 }
             });
@@ -75262,6 +75262,7 @@ var BoardComponent = /** @class */ (function () {
         this.team = team;
         console.log('add', team);
         this.socket.emit('post team', team);
+        this.beerForm.reset();
     };
     BoardComponent.prototype.editTeam = function (team, i) {
         this.idx = i;
@@ -75283,6 +75284,7 @@ var BoardComponent = /** @class */ (function () {
         this.team = team;
         this.socket.emit('put team', team);
         this.type = 'add';
+        this.editForm.reset();
     };
     BoardComponent.prototype.deleteTeam = function (team) {
         this.socket.emit('delete team', team);

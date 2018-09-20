@@ -29,7 +29,7 @@ export class BoardComponent {
 
 		this.socket.on('put team response', res => {
 			this.teams.forEach((team, i) => {
-				if ((team.name = res.name)) {
+				if (team.name == res.name) {
 					this.teams.splice(i, 1, res);
 				}
 			});
@@ -37,7 +37,7 @@ export class BoardComponent {
 
 		this.socket.on('delete team response', res => {
 			this.teams.forEach((team, i) => {
-				if ((team.name = res.name)) {
+				if (team.name == res.name) {
 					this.teams.splice(i, 1);
 				}
 			});
@@ -65,6 +65,7 @@ export class BoardComponent {
 		this.team = team;
 		console.log('add', team);
 		this.socket.emit('post team', team);
+		this.beerForm.reset();
 	}
 
 	editTeam(team, i) {
@@ -87,6 +88,7 @@ export class BoardComponent {
 		this.team = team;
 		this.socket.emit('put team', team);
 		this.type = 'add';
+		this.editForm.reset();
 	}
 
 	deleteTeam(team) {
