@@ -69,14 +69,18 @@ export class BoardComponent {
 		this.idx = i;
 		this.team = team;
 		this.editForm = this._fb.group({
-			name: [this.editForm.get('name').value],
-			p1: [this.editForm.get('p1').value],
-			p2: [this.editForm.get('p2').value],
-			score: [this.team.score]
+			name: [team.name, [Validators.required]],
+			p1: [team.p1, [Validators.required]],
+			p2: [team.p2, [Validators.required]]
 		});
 		this.type = 'edit';
 	}
-	submit(team) {
+	submit() {
+		let team = {
+			name: [this.editForm.get('name').value, [Validators.required]],
+			p1: [this.editForm.get('p1').value, [Validators.required]],
+			p2: [this.editForm.get('p2').value, [Validators.required]]
+		};
 		this.socket.emit('put team', team);
 	}
 

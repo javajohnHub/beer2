@@ -75265,14 +75265,18 @@ var BoardComponent = /** @class */ (function () {
         this.idx = i;
         this.team = team;
         this.editForm = this._fb.group({
-            name: [this.editForm.get('name').value],
-            p1: [this.editForm.get('p1').value],
-            p2: [this.editForm.get('p2').value],
-            score: [this.team.score]
+            name: [team.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            p1: [team.p1, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            p2: [team.p2, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]]
         });
         this.type = 'edit';
     };
-    BoardComponent.prototype.submit = function (team) {
+    BoardComponent.prototype.submit = function () {
+        var team = {
+            name: [this.editForm.get('name').value, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            p1: [this.editForm.get('p1').value, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            p2: [this.editForm.get('p2').value, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]]
+        };
         this.socket.emit('put team', team);
     };
     BoardComponent.prototype.deleteTeam = function (team) {
