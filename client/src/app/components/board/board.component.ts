@@ -97,11 +97,13 @@ export class BoardComponent {
 	}
 
 	minus(team) {
-		console.log(team.score--);
-		if (this.type == 'edit' && team.score != 0) {
+		console.log(team.score);
+		if (this.type == 'edit' && team.score > 0) {
 			team.score--;
+			console.log(team.score);
 			this.socket.emit('put team', team);
 		}
+		console.log(team.score);
 	}
 
 	plus(team) {
