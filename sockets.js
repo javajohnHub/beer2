@@ -10,6 +10,7 @@ module.exports = function(io) {
       socket.join(roomName);
       socket.room = roomName;
       console.log(socket.room);
+      socket.emit("send rooms", io.sockets.adapter.rooms);
     });
 
     socket.on("error", err => {
