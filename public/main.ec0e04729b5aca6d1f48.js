@@ -75249,9 +75249,9 @@ var BoardComponent = /** @class */ (function () {
     BoardComponent.prototype.addTeam = function () {
         this.type = 'add';
         var team = {
-            name: this.beerForm.get('name').value,
-            p1: this.beerForm.get('p1').value,
-            p2: this.beerForm.get('p2').value,
+            name: [this.beerForm.get('name').value, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            p1: [this.beerForm.get('p1').value, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            p2: [this.beerForm.get('p2').value, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
             score: 0
         };
         this.team = team;

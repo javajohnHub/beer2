@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { SocketService } from '../../shared/socket.service';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
 	selector: 'app-board',
@@ -53,9 +53,9 @@ export class BoardComponent {
 	addTeam() {
 		this.type = 'add';
 		let team = {
-			name: this.beerForm.get('name').value,
-			p1: this.beerForm.get('p1').value,
-			p2: this.beerForm.get('p2').value,
+			name: [this.beerForm.get('name').value, [Validators.required]],
+			p1: [this.beerForm.get('p1').value, [Validators.required]],
+			p2: [this.beerForm.get('p2').value, [Validators.required]],
 			score: 0
 		};
 		this.team = team;
