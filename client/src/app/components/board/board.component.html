@@ -73,7 +73,8 @@
 
 <div class="ui-g">
     <div class="ui-g-12">
-        <div class="ui-g-6" *ngFor="let room of rooms; let i=index">
+        <div class="ui-g-6" *ngFor="let room of [rooms]; let i=index">
+            {{room | json}}
             <button (click)="joinRoom()">Join</button>
         </div>
 
