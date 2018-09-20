@@ -31,7 +31,7 @@
             <div class="ui-g-6">
                 <div class="ui-g-12 ui-inputgroup">
                     <span class="ui-float-label">
-                        <input id="float-input" type="text" size="30" formControlName="name" pInputText>
+                        <input id="float-input" type="text" size="30" formControlName="name" pInputText disabled>
                         <label for="float-input">Team Name</label>
                     </span>
                 </div>
@@ -54,15 +54,15 @@
             </div>
 
         </form>
-        {{res | json}}<br />
-        <div class="ui-g-12" *ngFor="let team of teams">
+        <div class="ui-g-6" *ngFor="let team of teams; let i=index">
             {{team._id}}<br />
             {{team.name}}<br />
             {{team.p1}}<br />
             {{team.p2}}<br />
             {{team.score}}<br />
             <button *ngIf="type == 'add'" (click)="editTeam(team)" type="button" pButton label="Edit"></button>
-            <button *ngIf="type == 'edit'" (click)="submit(team)" type="button" pButton label="Submit"></button>
+            <button *ngIf="type == 'edit' && teams[i].name == team.name" (click)="submit(team)" type="button" pButton
+                label="Submit"></button>
             <button (click)="deleteTeam(team)" type="button" pButton label="Delete"></button>
         </div>
 

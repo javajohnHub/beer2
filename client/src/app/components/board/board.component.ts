@@ -12,32 +12,27 @@ export class BoardComponent {
 	team;
 	beerForm: FormGroup;
 	editForm: FormGroup;
-	res = [];
 	type = 'add';
 	constructor(private _fb: FormBuilder) {}
 	ngOnInit() {
 		this.socket = SocketService.getInstance();
 		this.socket.on('send teams', teams => {
 			this.teams = teams;
-			this.res = teams;
 		});
 
 		this.socket.on('post team response', res => {
-			this.res.push(res);
+			this.teams.push(res);
 			console.log('res', res);
 		});
 
 		this.socket.on('put team response', res => {
-			let index = this.res.indexOf(res);
-			console.log(index);
-			this.res.splice(index, 0, res);
-			console.log('res', res);
+			let index = this.teams.indexOf(res);
+			this.teams.splice(index, 0, res);
 		});
 
 		this.socket.on('delete team response', res => {
-			let index = this.res.indexOf(res);
-			this.res.splice(index, 1);
-			console.log('res', res);
+			let index = this.teams.indexOf(res);
+			this.teams.splice(index, 1);
 		});
 		this._createForm();
 		this.socket.emit('get teams');
