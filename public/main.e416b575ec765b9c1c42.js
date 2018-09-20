@@ -75236,6 +75236,7 @@ var BoardComponent = /** @class */ (function () {
         });
         this.socket.on('put team response', function (res) {
             _this.teams.forEach(function (team, i) {
+                console.log(team, res);
                 if (team.name == res.name) {
                     _this.teams.splice(i, 1, res);
                 }
@@ -75255,8 +75256,7 @@ var BoardComponent = /** @class */ (function () {
         this.beerForm = this._fb.group({
             name: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
             p1: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
-            p2: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
-            score: [0, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]]
+            p2: ['', [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]]
         });
     };
     BoardComponent.prototype.addTeam = function () {
@@ -75299,6 +75299,7 @@ var BoardComponent = /** @class */ (function () {
         this.type = 'add';
     };
     BoardComponent.prototype.minus = function (team) {
+        console.log(team.score--);
         if (this.type == 'edit' && team.score != 0) {
             team.score--;
             this.socket.emit('put team', team);

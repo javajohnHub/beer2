@@ -29,6 +29,7 @@ export class BoardComponent {
 
 		this.socket.on('put team response', res => {
 			this.teams.forEach((team, i) => {
+				console.log(team, res);
 				if (team.name == res.name) {
 					this.teams.splice(i, 1, res);
 				}
@@ -50,8 +51,7 @@ export class BoardComponent {
 		this.beerForm = this._fb.group({
 			name: ['', [Validators.required]],
 			p1: ['', [Validators.required]],
-			p2: ['', [Validators.required]],
-			score: [0, [Validators.required]]
+			p2: ['', [Validators.required]]
 		});
 	}
 	addTeam() {
@@ -97,6 +97,7 @@ export class BoardComponent {
 	}
 
 	minus(team) {
+		console.log(team.score--);
 		if (this.type == 'edit' && team.score != 0) {
 			team.score--;
 			this.socket.emit('put team', team);
