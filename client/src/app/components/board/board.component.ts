@@ -55,10 +55,6 @@ export class BoardComponent {
 	}
 
 	editTeam(team) {
-		this.beerForm.get('name').setValue(team.name);
-		this.beerForm.get('p1').setValue(team.p1);
-		this.beerForm.get('p2').setValue(team.p2);
-		this.beerForm.get('score').setValue(team.score);
 		this.socket.emit('put team', team);
 	}
 
