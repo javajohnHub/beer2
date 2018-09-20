@@ -22,8 +22,9 @@ export class BoardComponent {
 		});
 
 		this.socket.on('post team response', res => {
+			console.log(res);
 			this.teams.push(res);
-			console.log('res', res);
+			console.log('post response', res);
 		});
 
 		this.socket.on('put team response', res => {
@@ -56,9 +57,9 @@ export class BoardComponent {
 	addTeam() {
 		this.type = 'add';
 		let team = {
-			name: [this.beerForm.get('name').value, [Validators.required]],
-			p1: [this.beerForm.get('p1').value, [Validators.required]],
-			p2: [this.beerForm.get('p2').value, [Validators.required]],
+			name: this.beerForm.get('name').value,
+			p1: this.beerForm.get('p1').value,
+			p2: this.beerForm.get('p2').value,
 			score: 0
 		};
 		this.team = team;
@@ -79,9 +80,9 @@ export class BoardComponent {
 	}
 	submit() {
 		let team = {
-			name: [this.editForm.get('name').value, [Validators.required]],
-			p1: [this.editForm.get('p1').value, [Validators.required]],
-			p2: [this.editForm.get('p2').value, [Validators.required]]
+			name: this.editForm.get('name').value,
+			p1: this.editForm.get('p1').value,
+			p2: this.editForm.get('p2').value
 		};
 		this.team = team;
 		this.socket.emit('put team', team);

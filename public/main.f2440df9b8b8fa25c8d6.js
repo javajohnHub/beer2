@@ -75222,8 +75222,9 @@ var BoardComponent = /** @class */ (function () {
             _this.teams = teams;
         });
         this.socket.on('post team response', function (res) {
+            console.log(res);
             _this.teams.push(res);
-            console.log('res', res);
+            console.log('post response', res);
         });
         this.socket.on('put team response', function (res) {
             _this.teams.forEach(function (team, i) {
@@ -75253,9 +75254,9 @@ var BoardComponent = /** @class */ (function () {
     BoardComponent.prototype.addTeam = function () {
         this.type = 'add';
         var team = {
-            name: [this.beerForm.get('name').value, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
-            p1: [this.beerForm.get('p1').value, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
-            p2: [this.beerForm.get('p2').value, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
+            name: this.beerForm.get('name').value,
+            p1: this.beerForm.get('p1').value,
+            p2: this.beerForm.get('p2').value,
             score: 0
         };
         this.team = team;
@@ -75275,9 +75276,9 @@ var BoardComponent = /** @class */ (function () {
     };
     BoardComponent.prototype.submit = function () {
         var team = {
-            name: [this.editForm.get('name').value, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
-            p1: [this.editForm.get('p1').value, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
-            p2: [this.editForm.get('p2').value, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]]
+            name: this.editForm.get('name').value,
+            p1: this.editForm.get('p1').value,
+            p2: this.editForm.get('p2').value
         };
         this.team = team;
         this.socket.emit('put team', team);
