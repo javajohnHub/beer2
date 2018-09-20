@@ -75283,13 +75283,7 @@ var BoardComponent = /** @class */ (function () {
         });
         this.type = 'edit';
     };
-    BoardComponent.prototype.submit = function () {
-        var team = {
-            name: this.editForm.get('name').value,
-            p1: this.editForm.get('p1').value,
-            p2: this.editForm.get('p2').value,
-            score: this.team.score
-        };
+    BoardComponent.prototype.submit = function (team) {
         this.team = team;
         this.socket.emit('put team', team);
         this.type = 'add';

@@ -79,13 +79,7 @@ export class BoardComponent {
 		});
 		this.type = 'edit';
 	}
-	submit() {
-		let team = {
-			name: this.editForm.get('name').value,
-			p1: this.editForm.get('p1').value,
-			p2: this.editForm.get('p2').value,
-			score: this.team.score
-		};
+	submit(team) {
 		this.team = team;
 		this.socket.emit('put team', team);
 		this.type = 'add';
