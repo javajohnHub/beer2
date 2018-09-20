@@ -14,10 +14,12 @@ export class BoardComponent {
 	team;
 	beerForm: FormGroup;
 	editForm: FormGroup;
+	roomForm: FormGroup;
 	type = 'add';
 	idx = 0;
 	rooms;
 	display: boolean = true;
+	createRoomVis: boolean = false;
 	constructor(
 		private _fb: FormBuilder,
 		private _confirmationService: ConfirmationService
@@ -61,27 +63,16 @@ export class BoardComponent {
 		this.socket.emit('get teams');
 
 		this._confirmationService.confirm({
-			message: 'Are you sure that you want to proceed?',
+			message: 'Join Room or Create New Room?',
 			header: 'Confirmation',
-			icon: 'pi pi-exclamation-triangle',
+			icon: 'pi pi-question',
 			accept: () => {
-				this.msgs = [
-					{
-						severity: 'info',
-						summary: 'Room Created',
-						detail: 'You have created a new room'
-					}
-				];
+				this.roomForm = this._fb.group({
+					name: ['', [Validators.required]]
+				});
+				this.createRoomVis = true;
 			},
-			reject: () => {
-				this.msgs = [
-					{
-						severity: 'info',
-						summary: 'Choose a Room to Join',
-						detail: 'You must choose a room to join'
-					}
-				];
-			}
+			reject: () => {}
 		});
 	}
 
@@ -149,5 +140,10 @@ export class BoardComponent {
 
 	joinRoom(room) {
 		console.log();
+	}
+
+	addRoom() {
+		this.createRoomVis = false;
+		this.socket.emit('add room', this.roomForm.get('name').value);
 	}
 }

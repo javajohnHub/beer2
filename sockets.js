@@ -9,6 +9,7 @@ module.exports = function(io) {
     socket.on("add room", function(roomName) {
       socket.join(roomName);
       socket.room = roomName;
+      console.log(socket.room);
     });
 
     socket.on("error", err => {
