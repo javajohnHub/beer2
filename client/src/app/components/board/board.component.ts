@@ -82,6 +82,7 @@ export class BoardComponent {
 			p2: [this.editForm.get('p2').value, [Validators.required]]
 		};
 		this.socket.emit('put team', team);
+		this.type = 'add';
 	}
 
 	deleteTeam(team) {

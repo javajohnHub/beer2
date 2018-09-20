@@ -1,6 +1,6 @@
 <div class="ui-g">
     <div class="ui-g-12">
-        <form [formGroup]="beerForm" *ngIf="type == 'add'">
+        <form [formGroup]="beerForm" *ngIf="type == 'add' || this.teams.length == 0">
             <div class="ui-g-6">
                 <div class="ui-g-12 ui-inputgroup">
                     <span class="ui-float-label">
