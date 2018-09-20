@@ -46,7 +46,7 @@ module.exports = function(io) {
         if (err) {
           console.log(err);
         } else {
-          console.log("tezam", team);
+          console.log("tezam", putteam, team);
           team.name = putteam.name || team.name;
           team.p1 = putteam.p1 || team.p1;
           team.p2 = putteam.p2 || team.p2;
