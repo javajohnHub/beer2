@@ -1,19 +1,23 @@
 <div class="ui-g">
     <div class="ui-g-12">
         <form [formGroup]="beerForm">
-            <div>
+            <div class="ui-g-12">
                 <span class="ui-float-label">
-                    <input class="ui-g-12" id="float-input" type="text" size="30" formControlName="name" pInputText>
+                    <input id="float-input" type="text" size="30" formControlName="name" pInputText>
                     <label for="float-input">Team Name</label>
-                </span><br />
+                </span>
+            </div>
+            <div class="ui-g-12">
                 <span class="ui-float-label">
                     <input class="ui-g-12" id="p1" type="text" size="30" formControlName="p1" pInputText>
                     <label for="p1">Player 1</label>
-                </span><br />
+                </span>
+            </div>
+            <div class="ui-g-12">
                 <span class="ui-float-label">
                     <input class="ui-g-12" id="p2" type="text" size="30" formControlName="p2" pInputText>
                     <label for="p2">Player 2</label>
-                </span><br />
+                </span>
             </div>
             <button (click)="addTeam()" type="button" pButton label="New Team"></button>
         </form>
