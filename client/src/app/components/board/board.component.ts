@@ -12,7 +12,7 @@ export class BoardComponent {
 	team;
 	beerForm: FormGroup;
 	editForm: FormGroup;
-	res;
+	res = [];
 	type = 'add';
 	constructor(private _fb: FormBuilder) {}
 	ngOnInit() {
@@ -22,17 +22,20 @@ export class BoardComponent {
 		});
 
 		this.socket.on('post team response', res => {
-			this.res = res;
+			this.res.push(res);
 			console.log('res', res);
 		});
 
 		this.socket.on('put team response', res => {
-			this.res = res;
+			let index = this.res.indexOf(res);
+			console.log(index);
+			this.res.splice(index, 0, res);
 			console.log('res', res);
 		});
 
 		this.socket.on('delete team response', res => {
-			this.res = res;
+			let index = this.res.indexOf(res);
+			this.res.splice(index, 1);
 			console.log('res', res);
 		});
 		this._createForm();
@@ -45,12 +48,6 @@ export class BoardComponent {
 			p1: [''],
 			p2: [''],
 			score: [0]
-		});
-		this.editForm = this._fb.group({
-			name: [this.team.name],
-			p1: [this.team.p1],
-			p2: [this.team.p2],
-			score: [this.team.score]
 		});
 	}
 	addTeam() {
@@ -67,6 +64,12 @@ export class BoardComponent {
 
 	editTeam(team) {
 		this.team = team;
+		this.editForm = this._fb.group({
+			name: [this.team.name],
+			p1: [this.team.p1],
+			p2: [this.team.p2],
+			score: [this.team.score]
+		});
 		this.type = 'edit';
 	}
 	submit(team) {

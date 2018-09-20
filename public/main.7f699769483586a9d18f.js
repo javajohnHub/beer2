@@ -75211,6 +75211,7 @@ __webpack_require__.r(__webpack_exports__);
 var BoardComponent = /** @class */ (function () {
     function BoardComponent(_fb) {
         this._fb = _fb;
+        this.res = [];
         this.type = 'add';
     }
     BoardComponent.prototype.ngOnInit = function () {
@@ -75220,15 +75221,18 @@ var BoardComponent = /** @class */ (function () {
             _this.teams = teams;
         });
         this.socket.on('post team response', function (res) {
-            _this.res = res;
+            _this.res.push(res);
             console.log('res', res);
         });
         this.socket.on('put team response', function (res) {
-            _this.res = res;
+            var index = _this.res.indexOf(res);
+            console.log(index);
+            _this.res.splice(index, 0, res);
             console.log('res', res);
         });
         this.socket.on('delete team response', function (res) {
-            _this.res = res;
+            var index = _this.res.indexOf(res);
+            _this.res.splice(index, 1);
             console.log('res', res);
         });
         this._createForm();
@@ -75240,12 +75244,6 @@ var BoardComponent = /** @class */ (function () {
             p1: [''],
             p2: [''],
             score: [0]
-        });
-        this.editForm = this._fb.group({
-            name: [this.team.name],
-            p1: [this.team.p1],
-            p2: [this.team.p2],
-            score: [this.team.score]
         });
     };
     BoardComponent.prototype.addTeam = function () {
@@ -75261,6 +75259,12 @@ var BoardComponent = /** @class */ (function () {
     };
     BoardComponent.prototype.editTeam = function (team) {
         this.team = team;
+        this.editForm = this._fb.group({
+            name: [this.team.name],
+            p1: [this.team.p1],
+            p2: [this.team.p2],
+            score: [this.team.score]
+        });
         this.type = 'edit';
     };
     BoardComponent.prototype.submit = function (team) {
