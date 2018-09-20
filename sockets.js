@@ -47,10 +47,10 @@ module.exports = function(io) {
           console.log(err);
         } else {
           console.log("tezam", putteam, team);
-          team.name = putteam.name || team.name;
-          team.p1 = putteam.p1 || team.p1;
-          team.p2 = putteam.p2 || team.p2;
-          team.score = putteam.score || team.score;
+          team.name = putteam.name;
+          team.p1 = putteam.p1;
+          team.p2 = putteam.p2;
+          team.score = putteam.score;
 
           // Save the updated document back to the database
           team.save(function(err, team) {
