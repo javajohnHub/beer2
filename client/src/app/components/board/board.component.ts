@@ -31,7 +31,7 @@ export class BoardComponent {
 		});
 
 		this.socket.on('send rooms', rooms => {
-			console.log('rooms', this.rooms);
+			console.log('rooms', rooms);
 			this.rooms = rooms;
 		});
 		this.socket.on('some event', () => {
