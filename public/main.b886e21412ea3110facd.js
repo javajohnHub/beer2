@@ -75297,12 +75297,16 @@ var BoardComponent = /** @class */ (function () {
         this.type = 'add';
     };
     BoardComponent.prototype.minus = function (team) {
-        team.score--;
-        this.socket.emit('put team', team);
+        if (this.type == 'edit') {
+            team.score--;
+            this.socket.emit('put team', team);
+        }
     };
     BoardComponent.prototype.plus = function (team) {
-        team.score++;
-        this.socket.emit('put team', team);
+        if (this.type == 'edit') {
+            team.score++;
+            this.socket.emit('put team', team);
+        }
     };
     return BoardComponent;
 }());
