@@ -6,7 +6,7 @@ var TeamSchema = new Schema({
   name: String,
   p1: String,
   p2: String,
-  score: Number
+  score: { type: Number, min: 0 }
 });
 
 // Compile model from schema
