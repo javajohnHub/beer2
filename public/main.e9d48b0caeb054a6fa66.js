@@ -75301,7 +75301,7 @@ var BoardComponent = /** @class */ (function () {
             console.log(team.score);
             this.socket.emit('put team', team);
         }
-        console.log(team.score);
+        console.log(this.team.score);
     };
     BoardComponent.prototype.plus = function (team) {
         if (this.type == 'edit') {
