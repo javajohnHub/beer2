@@ -54,11 +54,15 @@ export class BoardComponent {
 		this.socket.emit('post team', team);
 	}
 
-	editTeam(id) {
-		this.socket.emit('put team', id);
+	editTeam(team) {
+		this.beerForm.get('name').setValue(team.name);
+		this.beerForm.get('p1').setValue(team.p1);
+		this.beerForm.get('p2').setValue(team.p2);
+		this.beerForm.get('score').setValue(team.score);
+		this.socket.emit('put team', team);
 	}
 
-	deleteTeam(id) {
-		this.socket.emit('delete team', id);
+	deleteTeam(team) {
+		this.socket.emit('delete team', team);
 	}
 }
