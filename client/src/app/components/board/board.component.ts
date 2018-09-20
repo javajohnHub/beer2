@@ -118,7 +118,6 @@ export class BoardComponent {
 	}
 
 	joinRoom(room) {
-		console.log(room);
-		//this.socket.join(room);
+		console.log(room.keys());
 	}
 }

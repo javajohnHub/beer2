@@ -75321,8 +75321,7 @@ var BoardComponent = /** @class */ (function () {
         }
     };
     BoardComponent.prototype.joinRoom = function (room) {
-        console.log(room);
-        //this.socket.join(room);
+        console.log(room.keys());
     };
     return BoardComponent;
 }());
