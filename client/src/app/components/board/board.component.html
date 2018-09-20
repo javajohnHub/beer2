@@ -18,7 +18,12 @@
             <button (click)="addTeam()" type="button" pButton label="New Team"></button>
         </form>
         {{res | json}}<br />
+        <div class="ui-g-12" *ngFor="let team of teams">
+            {{team._id}}<br />
+            {{team.name}}<br />
+            {{team.p1}}<br />
+            {{team.p2}}<br />
+        </div>
 
-        {{teams | json}}
     </div>
 </div>
