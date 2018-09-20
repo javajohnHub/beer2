@@ -60,9 +60,9 @@
             {{team.p1}}<br />
             {{team.p2}}<br />
             {{team.score}}<br />
-            <button *ngIf="type == 'add'" (click)="editTeam(team)" type="button" pButton label="Edit"></button>
-            <button *ngIf="type == 'edit' && teams[idx].name == team.name" (click)="submit(team, i)" type="button"
-                pButton label="Submit"></button>
+            <button *ngIf="type == 'add'" (click)="editTeam(team, i)" type="button" pButton label="Edit"></button>
+            <button *ngIf="type == 'edit' && teams[idx].name == team.name" (click)="submit(team)" type="button" pButton
+                label="Submit"></button>
             <button (click)="deleteTeam(team)" type="button" pButton label="Delete"></button>
         </div>
 

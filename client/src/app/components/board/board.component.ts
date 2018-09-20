@@ -13,7 +13,7 @@ export class BoardComponent {
 	beerForm: FormGroup;
 	editForm: FormGroup;
 	type = 'add';
-	idx;
+	idx = 0;
 	constructor(private _fb: FormBuilder) {}
 	ngOnInit() {
 		this.socket = SocketService.getInstance();
@@ -59,7 +59,8 @@ export class BoardComponent {
 		this.socket.emit('post team', team);
 	}
 
-	editTeam(team) {
+	editTeam(team, i) {
+		this.idx = i;
 		this.team = team;
 		this.editForm = this._fb.group({
 			name: [this.team.name],
@@ -69,8 +70,7 @@ export class BoardComponent {
 		});
 		this.type = 'edit';
 	}
-	submit(team, i) {
-		this.idx = i;
+	submit(team) {
 		this.socket.emit('put team', team);
 	}
 
