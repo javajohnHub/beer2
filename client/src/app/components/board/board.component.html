@@ -70,3 +70,67 @@
 
     </div>
 </div>
+
+<div class="ui-g">
+    <div class="ui-g-12">
+        <form [formGroup]="beerForm" *ngIf="type == 'add' || this.teams.length == 0">
+            <div class="ui-g-6">
+                <div class="ui-g-12 ui-inputgroup">
+                    <span class="ui-float-label">
+                        <input id="float-input" type="text" size="30" formControlName="name" pInputText>
+                        <label for="float-input">Team Name</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-inputgroup">
+                    <span class="ui-float-label">
+                        <input class="ui-g-12" id="p1" type="text" size="30" formControlName="p1" pInputText>
+                        <label for="p1">Player 1</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-inputgroup">
+                    <span class="ui-float-label">
+                        <input class="ui-g-12" id="p2" type="text" size="30" formControlName="p2" pInputText>
+                        <label for="p2">Player 2</label>
+                    </span>
+                </div>
+                <div class="ui-g-12">
+                    <button (click)="addTeam()" type="button" pButton label="New Team"></button>
+                </div>
+
+            </div>
+
+        </form>
+        <form [formGroup]="editForm" *ngIf="type == 'edit'">
+            <div class="ui-g-6">
+                <div class="ui-g-12 ui-inputgroup">
+                    <span class="ui-float-label">
+                        <input id="float-input" type="text" size="30" formControlName="name" pInputText disabled>
+                        <label for="float-input">Team Name</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-inputgroup">
+                    <span class="ui-float-label">
+                        <input class="ui-g-12" id="p1" type="text" size="30" formControlName="p1" pInputText>
+                        <label for="p1">Player 1</label>
+                    </span>
+                </div>
+                <div class="ui-g-12 ui-inputgroup">
+                    <span class="ui-float-label">
+                        <input class="ui-g-12" id="p2" type="text" size="30" formControlName="p2" pInputText>
+                        <label for="p2">Player 2</label>
+                    </span>
+                </div>
+                <div class="ui-g-12">
+
+                </div>
+
+            </div>
+
+        </form>
+
+        <div class="ui-g-6" *ngFor="let room of rooms; let i=index">
+            <button (click)="joinRoom()">Join</button>
+        </div>
+
+    </div>
+</div>

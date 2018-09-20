@@ -14,6 +14,7 @@ export class BoardComponent {
 	editForm: FormGroup;
 	type = 'add';
 	idx = 0;
+	rooms;
 	constructor(private _fb: FormBuilder) {}
 	ngOnInit() {
 		this.socket = SocketService.getInstance();
@@ -110,5 +111,9 @@ export class BoardComponent {
 			team.score++;
 			this.socket.emit('put team', team);
 		}
+	}
+
+	joinRoom() {
+		this.socket.join('some room');
 	}
 }

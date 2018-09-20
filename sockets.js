@@ -1,10 +1,14 @@
 console.log("loaded");
 var Team = require("./models/team");
 module.exports = function(io) {
+  io.to("some room").on("connection", function(socket) {
+    console.log("connected", socket.id);
+
+    io.to("some room").emit("some event");
+  });
+
   io.on("connection", function(socket) {
     console.log("connected", socket.id);
-    socket.join("some room");
-    io.to("some room").emit("some event");
 
     socket.on("error", err => {
       console.log(err);
