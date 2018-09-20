@@ -75299,7 +75299,7 @@ var BoardComponent = /** @class */ (function () {
         this.type = 'add';
     };
     BoardComponent.prototype.minus = function (team) {
-        if (this.type == 'edit') {
+        if (this.type == 'edit' && team.score != 0) {
             team.score--;
             this.socket.emit('put team', team);
         }
