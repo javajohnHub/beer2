@@ -62,12 +62,14 @@ export class BoardComponent {
 			score: 0
 		};
 		this.team = team;
+		console.log('add', team);
 		this.socket.emit('post team', team);
 	}
 
 	editTeam(team, i) {
 		this.idx = i;
 		this.team = team;
+		console.log('edit', team);
 		this.editForm = this._fb.group({
 			name: [team.name, [Validators.required]],
 			p1: [team.p1, [Validators.required]],
@@ -81,6 +83,7 @@ export class BoardComponent {
 			p1: [this.editForm.get('p1').value, [Validators.required]],
 			p2: [this.editForm.get('p2').value, [Validators.required]]
 		};
+		this.team = team;
 		this.socket.emit('put team', team);
 		this.type = 'add';
 	}

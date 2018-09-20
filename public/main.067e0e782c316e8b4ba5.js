@@ -75259,11 +75259,13 @@ var BoardComponent = /** @class */ (function () {
             score: 0
         };
         this.team = team;
+        console.log('add', team);
         this.socket.emit('post team', team);
     };
     BoardComponent.prototype.editTeam = function (team, i) {
         this.idx = i;
         this.team = team;
+        console.log('edit', team);
         this.editForm = this._fb.group({
             name: [team.name, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
             p1: [team.p1, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
@@ -75277,6 +75279,7 @@ var BoardComponent = /** @class */ (function () {
             p1: [this.editForm.get('p1').value, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]],
             p2: [this.editForm.get('p2').value, [_angular_forms__WEBPACK_IMPORTED_MODULE_1__["Validators"].required]]
         };
+        this.team = team;
         this.socket.emit('put team', team);
         this.type = 'add';
     };
