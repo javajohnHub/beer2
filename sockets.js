@@ -1,16 +1,16 @@
 console.log("loaded");
 var Team = require("./models/team");
 module.exports = function(io) {
-  io.to("some room").on("connection", function(socket) {
-    console.log("connected", socket.id);
-
-    io.to("some room").emit("some event");
-  });
-
-  io.on("connection", function(socket) {
+  io.sockets.on("connection", function(socket) {
     console.log("connected", socket.id);
     console.log(io.sockets.adapter.rooms);
     socket.emit("send rooms", io.sockets.adapter.rooms);
+
+    socket.on("room", function(room) {
+      socket.join(room);
+      io.sockets.in(room).emit("message", "what is going on, party people?");
+    });
+
     socket.on("error", err => {
       console.log(err);
     });
