@@ -22,6 +22,16 @@ export class BoardComponent {
 			this.res = res;
 			console.log('res', res);
 		});
+
+		this.socket.on('put team response', res => {
+			this.res = res;
+			console.log('res', res);
+		});
+
+		this.socket.on('delete team response', res => {
+			this.res = res;
+			console.log('res', res);
+		});
 		this._createForm();
 		this.socket.emit('get teams');
 	}
@@ -42,5 +52,13 @@ export class BoardComponent {
 			score: 0
 		};
 		this.socket.emit('post team', team);
+	}
+
+	editTeam(id) {
+		this.socket.emit('put team', id);
+	}
+
+	deleteTeam(id) {
+		this.socket.emit('delete team', id);
 	}
 }

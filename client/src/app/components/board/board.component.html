@@ -24,6 +24,8 @@
             {{team.p1}}<br />
             {{team.p2}}<br />
             {{team.score}}<br />
+            <button (click)="editTeam(team._id)" type="button" pButton label="Edit"></button>
+            <button (click)="deleteTeam(team._id)" type="button" pButton label="Delete"></button>
         </div>
 
     </div>
