@@ -63,8 +63,8 @@
             <button *ngIf="type == 'add'" (click)="editTeam(team, i)" type="button" pButton label="Edit"></button>
             <button *ngIf="type == 'edit' && teams[idx].name == team.name" (click)="submit(team)" type="button" pButton
                 label="Submit"></button>
-            <button (click)="minus(team)" type="button" pButton label="-"></button>
-            <button (click)="plus(team)" type="button" pButton label="+"></button>
+            <button *ngIf="type == 'edit'" (click)="minus(team)" type="button" pButton label="-"></button>
+            <button *ngIf="type == 'edit'" (click)="plus(team)" type="button" pButton label="+"></button>
             <button (click)="deleteTeam(team)" type="button" pButton label="Delete"></button>
         </div>
 
