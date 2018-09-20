@@ -118,6 +118,6 @@ export class BoardComponent {
 	}
 
 	joinRoom(room) {
-		console.log(room.keys());
+		console.log(Object.keys(room));
 	}
 }
